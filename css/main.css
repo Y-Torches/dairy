@@ -1,0 +1,231 @@
+@font-face {
+    font-family: btnFont;
+    src: url('/font/btnFont.woff2');
+}
+
+@font-face {
+    font-family: LMusicBtnFont;
+    src: url('/LMusic/font/btnFont.woff2');
+}
+
+*{
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+:root {
+    --background: hsl(335, 50%, 80%);
+    --color: #EEEEEE;
+    --main_background: hsl(335, 80%, 35%);
+    --first_background: hsl(335, 70%, 40%);
+    --monthContainer_background: hsl(335, 60%, 45%);
+    --day_background: hsl(335, 50%, 50%);
+    --title_length: 0;
+}
+
+html, body {
+    display: flex;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background);
+    color: var(--color);
+    overflow: hidden;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+#left {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    height: 100%;
+    background: var(--main_background);
+    justify-content: center;
+    align-items: center;
+}
+
+#home {
+    display: flex;
+    width: 100%;
+    font-size: 1.5vw;
+    line-height: 2em;
+    text-align: center;
+    background: var(--first_background);
+    cursor: pointer;
+}
+
+#logo {
+    margin: 0.75vw;
+    margin-left: calc((100% - var(--title_length) * 1.5vw - 1.5vw - 0.75vw) /2);
+    width: 1.5vw;
+    height: 1.5vw;
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100% - 9vw);
+    background: var(--main_background);
+    justify-content: center;
+    align-items: center;
+}
+
+#musicControl {
+    font-family: LMusicBtnFont;
+    display: flex;
+    padding: 0 2vh;
+    width: calc(100% - 4vh);
+    background: var(--first_background);
+    justify-content: center;
+    align-items: center;
+}
+
+#musicControl .btn {
+    font-size: 1.5vw;
+    line-height: 2em;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#lyric {
+    flex: 1;
+    margin-left: 1vh;
+    font-size: 1vw;
+    line-height: 3em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.yearContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: var(--first_background);
+    align-items: center;
+    cursor: pointer;
+}
+
+.yearContainer ~ .yearContainer {
+    margin-top: 0.5vw;
+}
+
+.year {
+    font-size: 2vw;
+    line-height: 2em;
+}
+
+.monthsContainer {
+    width: 100%;
+    max-height: 13vw;
+    overflow: auto;
+}
+
+.monthContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: var(--monthContainer_background);
+    align-items: center;
+}
+
+.monthContainer ~ .monthContainer {
+    margin-top: 0.5vw;
+}
+
+.month {
+    font-size: 1.5vw;
+    line-height: 2em;
+}
+
+.dayContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 10vw;
+    align-items: center;
+    overflow: auto;
+}
+
+.day {
+    display: flex;
+    width: 100%;
+    background: var(--day_background);
+    font-size: 1.25vw;
+    line-height: 2em;
+    justify-content: center;
+}
+
+.day ~ .day {
+    margin-top: 0.5vw;
+}
+
+.hide .monthContainer {
+    display: none;
+}
+
+.hide .dayContainer {
+    display: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 2vw;
+    width: 70%;
+    max-height: 80%;
+    background: var(--main_background);
+    border-radius: 1vw;
+    overflow: auto;
+}
+
+#info {
+    text-align: center;
+}
+
+#date {
+    display: inline-block;
+    font-size: 2vw;
+    line-height: 2em;
+}
+
+#length {
+    display: inline-block;
+    font-size: 1.25vw;
+    line-height: 4vw;
+}
+
+.text {
+    font-size: 1.5vw;
+    line-height: 2em;
+    text-indent: 2em;
+}
+
+#music {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: var(--main_background);
+    color: var(--color);
+    transform: translateY(-100%);
+    transition: all 1s;
+}
+
+#music .return {
+    font-family: btnFont;
+    position: absolute;
+    left: 2vh;
+    bottom: 2vh;
+    width: 3vh;
+    height: 3vh;
+    font-size: 3vh;
+    cursor: pointer;
+}

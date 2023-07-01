@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="love.png" type="image/x-icon">
+    <title></title>
+</head>
+<body>
+    <div id="left">
+        <div id="home">
+            <img src="love.png" id="logo">
+        </div>
+        <aside></aside>
+        <div id="musicControl">
+            <div class="btn">&#xe602;</div>
+            <div id="lyric">歌词正在加载中~</div>
+        </div>
+    </div>
+    <main>
+        <div id="info">
+            <div id="date"></div>
+            <div id="length"></div>
+        </div>
+    </main>
+    <div id="music">
+        <div class="return">&#xe000;</div>
+    </div>
+    <script>
+        const title = '余美美心情日记';
+    </script>
+    <script src="js/main.js"></script>
+    <script src="js/LMusic.js"></script>
+    <script>
+        const music = new LMusic({
+            container: '#music',
+            src: 'LMusic',
+            music: [{
+                src: '/music/高姗 - 遇见你的时候所有星星都落到我头上.ogg',
+                cover: '/cover/高姗 - 遇见你的时候所有星星都落到我头上.jpg',
+                lyric: '/lyric/高姗 - 遇见你的时候所有星星都落到我头上.lmlrc'
+            }],
+            autoPlay: true
+        });
+        window.addEventListener('DOMContentLoaded', () => {
+            const btn = document.querySelector('#musicControl').querySelector('.btn'),
+            lyric = document.querySelector('#lyric');
+            music.functions.stateChange.add((paused) => {
+                if (paused) {
+                    btn.innerHTML = '&#xe602;';
+                } else {
+                    btn.innerHTML = '&#xe603;';
+                }
+            });
+            music.functions.lyricChange.add((lyricText) => {
+                lyric.title = lyricText;
+                lyric.innerHTML = lyricText;
+            });
+        });
+    </script>
+</body>
+</html>
